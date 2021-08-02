@@ -1,5 +1,5 @@
 import { Gifs } from './Gifs'
-import '../Styles/listOfGifs.css'
+import 'Styles/listOfGifs.css'
 export const ListOfGifs = ({gifs}) => {
 
     return (
@@ -13,6 +13,7 @@ export const ListOfGifs = ({gifs}) => {
                 id={id}
             /> )
             }
+            
         </div>
     )
 }

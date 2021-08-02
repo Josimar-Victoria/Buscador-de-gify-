@@ -1,5 +1,6 @@
 import { Gifs } from '../Components/Gifs';
 import { useGlobalGifs } from '../Hooks/useGlobalGifs';
+
 export const Detail = ({params}) => {
     
     const gifs = useGlobalGifs()

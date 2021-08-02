@@ -1,21 +1,25 @@
-const apiKey = 'lB0Ewz1FLgJZVOKcKFXZvmHeeePqLQsS'
+import { API_KEY, API_URL } from "./settings"
 
-export const getGifs = ({ keyword = 'los simpson' } = {}) => {
+const fromApiResponseToGifs = apiResponse => {
+    const {data = []} = apiResponse
+    if(Array.isArray(data)) {
+        const gifs = data.map(image => {
+            const {images, title, id} = image
+            const { url } = images.downsized_medium
+            return { title, id, url}
+        })
+        console.log(gifs);
+        return gifs
+    }
+    return []
+}
 
-    const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`
+export const getGifs = ({ limit= 30, page = 0, keyword = 'los simpson' } = {}) => {
 
-    return (
-        fetch(apiURL)
-            .then(res => res.json())
-            .then(response => {
-                const { data } = response
-                const gifs = data.map(image => {
-                    const { images, title, id } = image
-                    const { url } = images.downsized_medium
-                    return { title, id, url }
-                })
-                console.log(gifs);
-                return gifs
-            })
-    )
+    const apiURL = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}
+    &limit=${limit}&offset=${page * limit}&rating=g&lang=en`
+
+    return fetch(apiURL)
+    .then(res => res.json())
+    .then(fromApiResponseToGifs)
 }

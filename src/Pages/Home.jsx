@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import { Link, useLocation } from 'wouter'
-import { ListOfGifs } from '../Components/ListOfGifs'
-import { Spinner } from '../Components/Spinner'
-import { useGifs } from '../Hooks/useGifs'
-
-const POPULAR_GIFS = ['Scarface', 'Matrisx', 'Morty']
+import {  useLocation } from 'wouter'
+import { ListOfGifs } from 'Components/ListOfGifs'
+import { Spinner } from 'Components/Spinner'
+import { useGifs } from 'Hooks/useGifs'
+import { LazyTrending } from 'Components/TrendingSearches/LazyTrending'
 
 export const Home = () => {
     const [keyword, setKeyword] = useState('')
     const [path, pushLocation]= useLocation()
-
     const { loading, gifs } = useGifs()
 
     const handleSumit = (e) => {
@@ -22,25 +20,28 @@ export const Home = () => {
         setKeyword(e.target.value)
     }
     return (
-        <>
-            <form onSubmit={handleSumit}>
-                <input placeholder='Search a gifs here ...' type="text" onChange={handleChange} value={keyword} />
-                <button>Buscar!</button>
-            </form>
-            return <>
-    {loading
-        ? <Spinner/>
-        :<ListOfGifs gifs={gifs}/>
-    }
+    <>
+        <form onSubmit={handleSumit}>
+            <input 
+            placeholder='Search a gifs here ...' 
+            type="text" onChange={handleChange} 
+            value={keyword} />
+            <button>Buscar!</button>
+        </form>
+        
+        <div className='App-main'>
+            <div className='App-results'>
+                <h3 className='App-title'>Ultima Busqueda</h3>
+                {loading
+                ? <Spinner/>
+                :<ListOfGifs gifs={gifs}/>
+                }
+            </div>
+            <div className='App-category'>
+                <LazyTrending/>
+            </div>
+        </div>
+        
     </>
-            <h3 className="App-title">Los gifs mas populares</h3>
-            <ul>
-                {POPULAR_GIFS.map((popularGifs) => (
-                    <li key={popularGifs}>
-                        <Link to={`/search/${popularGifs}`}>Gifs de {popularGifs}</Link>
-                    </li>
-                ))}
-            </ul>
-        </>
-    )
+)
 }

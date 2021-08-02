@@ -1,0 +1,18 @@
+.category-title{
+    color: #fff;
+    font-size: bold;
+}
+.category-list{
+    list-style-position: inside;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.category-link{
+    color: #fff;
+    font-size:1rem;
+    transition:  color ease-in 0.1s;
+}
+.category-link:hover {
+    color: aqua;
+}
