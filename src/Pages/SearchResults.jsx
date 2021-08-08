@@ -4,6 +4,7 @@ import { useGifs } from 'Hooks/useGifs';
 import { useNearScreen } from 'Hooks/useNearScreen';
 import { useCallback, useEffect, useRef } from 'react';
 import debounce from 'just-debounce-it';
+import SearchForms from 'Components/SearchForms';
 export  function SearchResults ({ params }) {
     const { keyword, rating } = params
     const { loading, gifs, setPage } = useGifs({ keyword, rating })
@@ -25,6 +26,7 @@ export  function SearchResults ({ params }) {
     {loading
         ? <Spinner/>
         :<>
+        <SearchForms/>
         <h3 className='App-title'>
             {decodeURI(keyword)}
         </h3>

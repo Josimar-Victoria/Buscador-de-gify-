@@ -14,5 +14,6 @@
     transition:  color ease-in 0.1s;
 }
 .category-link:hover {
-    color: aqua;
+    color: blue;
+    
 }

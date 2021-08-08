@@ -8,7 +8,7 @@ import { GifsContextProvider } from '../Components/Context/GifsContext';
 function App() {
 
   return (
-    <Context.Provider >
+    <Context.Provider value='hola mundo'>
       <div className="App">
         <section className="App-content">
           <Link to="/">
