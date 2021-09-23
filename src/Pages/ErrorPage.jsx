@@ -21,7 +21,7 @@ const ErrorPage = () => {
                 <div className="App-wrapper">
                     <div className="pageErrorStyles">
                         <span className="codeErrorStyles">404</span>
-                        <span className="msgErrorStyles">Sometimes gettings lost isn't that bad</span>
+                        <span className="msgErrorStyles">SometimeS gettings lost isn't that bad</span>
                         <img className="gifErrorStyles" src={randomImage()} alt="alt-page-404"/>
                         <Link to='/'>Go back home</Link>
                     </div>
