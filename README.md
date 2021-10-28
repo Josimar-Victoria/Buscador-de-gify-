@@ -1,5 +1,7 @@
 # BUscador de giff https://buscador-de-giffi.netlify.app/
 
+<img src='https://github.com/Josimar-Victoria/Buscador-de-gify-/blob/master/Captura%20de%20pantalla%20de%202021-10-28%2012-39-14.png?raw=true' alt='sj'/>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
